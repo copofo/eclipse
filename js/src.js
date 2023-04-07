@@ -1,4 +1,12 @@
 const f = (tag) => document.querySelector(tag)
+window.addEventListener('scroll', () =>{
+  
+  
+  window.scrollTo(0,0)
+  
+  
+})
+
 
 const cnv = f('canvas')
 
@@ -8,6 +16,7 @@ cnv.height = innerHeight
 
 const ctx = cnv.getContext('2d')
 
+const player = new Sprite(cnv.width/2,cnv.height/2,20,'white')
 
 
 function loop(){
@@ -19,10 +28,13 @@ function loop(){
 
 function update(){
   
+  ctx.fillStyle = "rgba(0,0,0,1)"
+  ctx.fillRect(0,0,cnv.width,cnv.height)
+  
+  player.draw()
   
 }
 
-function render(){
-  
-  
-}
+
+
+loop()
