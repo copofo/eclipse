@@ -18,13 +18,62 @@ const ctx = cnv.getContext('2d')
 
 const player = new Player(cnv.width/2,cnv.height/2,20,'#48fcff')
 
-let projectiles = []
-
 const shootingSpeed = 4
 
+let projectiles = []
+
+let enimys = []
+
+let intervalId
+
+let particles = []
 
 
-
+function spawnEnimys(){
+  
+  
+  intervalId = setInterval(()=>{
+    
+    const radius = Math.floor(Math.random() * 26) + 5
+    
+    let posX, posY
+    
+    if(Math.random() < 0.5){
+      
+      posX = Math.random() < 0.5 ? 0 - radius: cnv.width + radius
+      
+      posY = Math.random() * cnv.height
+      
+      
+    } else{
+      
+      posX = Math.random() * cnv.width
+      
+      posY = Math.random() < 0.5 ? 0 - radius : cnv.height + radius
+      
+    }
+    
+    const angle = Math.atan2(player.y - posY, player.x - posX)
+    
+    
+    const velocity = {
+      
+      x: Math.cos(angle),
+      y: Math.sin(angle)
+      
+      
+      
+    }
+    
+    const color = "hsl("+ Math.random() * 360 +",80%,50%)"
+    
+    
+    enimys.push(new Enimy(posX,posY,radius,color,velocity))
+    
+    
+  },1500)
+  
+}
 
 cnv.addEventListener('click',(e)=>{
   
@@ -61,7 +110,8 @@ function update(){
   
   
   checkProjectiles()
-  
+  checkEnimys()
+  checkParticles()
   player.update()
   
 }
@@ -74,6 +124,29 @@ function checkProjectiles(){
     p.update()
     
     checkOffScreen(p,i)
+    
+    
+    
+    for(let eIndex = enimys.length -1; eIndex >= 0; eIndex--){
+      
+      
+      const enimy = enimys[eIndex]
+      
+      const distance = Math.hypot(p.x - enimy.x, p.y - enimy.y)
+      
+      
+      //colisao
+      if(distance < p.radius + enimy.radius){
+        
+        enimys.splice(eIndex,1)
+        projectiles.splice(i,1)
+        createParticles(enimy,p)
+        
+      }
+      
+    }
+    
+    
     
     
   }
@@ -94,5 +167,76 @@ function checkOffScreen(projectile,index){
   
 }
 
+function checkEnimys(){
+  
+  enimys.forEach((enimy)=>{
+    
+    enimy.update()
+    
+    const distance = Math.hypot(player.x - enimy.x, player.y - enimy.y)
+    
+    if(distance < player.radius + enimy.radius){
+      
+      
+      
+      
+      
+    }
+    
+    
+  })
+  
+  
+}
+
+function createParticles(enimy,projectile){
+  
+  for(let i = 0; i < enimy.radius * 2; i++){
+  
+    const velocity = {
+    
+    x: (Math.random() - .5) * (Math.random() * 6),
+    
+    y: (Math.random() - .5) * (Math.random() * 6)
+    
+    
+    
+    }
+    particles.push(new Particle(projectile.x,projectile.y,Math.random()*2,enimy.color,velocity))
+  
+    
+  }
+  
+  
+  
+  
+}
+
+
+function checkParticles(){
+  
+  for(let i = particles.length - 1; i >= 0; i--){
+    
+    const p = particles[i]
+    p.update()
+    
+    if(p.alpha <= 0){
+      
+      particles.splice(i,1)
+      
+      
+      
+    }
+    
+    
+  }
+  
+  
+  
+  
+  
+}
+
 
 loop()
+spawnEnimys()
