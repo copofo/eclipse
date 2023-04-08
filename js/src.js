@@ -37,6 +37,7 @@ cnv.addEventListener('click',(e)=>{
     y: Math.sin(angle) * shootingSpeed
   }
   projectiles.push(new Projectile(player.x,player.y,3,"#48fcff",velocity))
+  //console.log(projectiles.length)
 })
 
 
@@ -72,8 +73,23 @@ function checkProjectiles(){
     const p = projectiles[i]
     p.update()
     
+    checkOffScreen(p,i)
+    
+    
   }
   
+  
+  
+}
+
+function checkOffScreen(projectile,index){
+  
+  if(projectile.x + projectile.radius < 0 || projectile.x - projectile.radius > cnv.width || projectile.y + projectile.radius < 0 || projectile.y - projectile.radius > cnv.height){
+    
+    projectiles.splice(index,1)
+   //console.log(projectiles.length)
+    
+  }
   
   
 }
