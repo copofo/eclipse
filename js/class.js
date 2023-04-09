@@ -141,7 +141,7 @@ class Enimy extends Projectile{
   
   constructor(x,y,radius,color,velocity){
     super(x,y,radius,color,velocity)
-    
+    this.newRadius = radius
     
     
   }
@@ -155,7 +155,27 @@ class Enimy extends Projectile{
       
       
     }
+    
+    
+  shrink(){
+    
+    if(this.newRadius < this.radius){
+      
+      
+      this.radius -= .5
+      
+    }
+    
+    
+    
+  }
   
+  update(){
+    this.shrink()
+    this.draw()
+    this.x += this.velocity.x
+    this.y += this.velocity.y
+  }
 }
 
 

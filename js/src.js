@@ -138,7 +138,16 @@ function checkProjectiles(){
       //colisao
       if(distance < p.radius + enimy.radius){
         
-        enimys.splice(eIndex,1)
+        if(enimy.radius > 15){
+          enimy.newRadius = enimy.radius -10
+        }else{
+          
+          enimys.splice(eIndex,1)
+          
+          
+        }
+        
+        
         projectiles.splice(i,1)
         createParticles(enimy,p)
         
