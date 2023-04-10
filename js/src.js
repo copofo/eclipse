@@ -107,10 +107,24 @@ btnNewGame.addEventListener('touchstart',(e)=>{
   
   e.preventDefault()
   
-  newGame()
+  btnNewGame.style.background = "#48fcff"
+  
+  setTimeout(()=>{
+    
+    newGame()
+    
+  },1100)
   
   
   
+  
+  
+})
+
+btnNewGame.addEventListener('touchend',(e)=>{
+  
+  
+  btnNewGame.style.background = "transparent"
 })
 
 
