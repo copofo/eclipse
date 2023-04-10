@@ -161,11 +161,15 @@ btnNewGame.addEventListener('mouseup',(e)=>{
 
 startContainer.addEventListener('click',(e)=>{
   e.preventDefault()
-  startContainer.style.opacity = 0
-  startContainer.style.zIndex = -1
-  startModal.style.opacity = 0
-  startModal.style.zIndex = -1
-  newGame()
+  
+  setTimeout(()=>{
+    startContainer.style.opacity = 0
+    startContainer.style.zIndex = -1
+    startModal.style.opacity = 0
+    startModal.style.zIndex = -1
+    newGame()
+  },500)
+  
 })
 
 
