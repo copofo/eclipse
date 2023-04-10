@@ -26,6 +26,10 @@ const gameOverModal = f('#gameOverModal')
 const gameOverScore = f('#gameOverScore')
 const btnNewGame = f('#btnNewGame')
 
+const startModal = f('#startModal')
+
+const startContainer = f('#startContainer')
+
 let animationId
 
 let score = 0
@@ -123,12 +127,46 @@ btnNewGame.addEventListener('touchstart',(e)=>{
 
 btnNewGame.addEventListener('touchend',(e)=>{
   
+  e.preventDefault()
   
   btnNewGame.style.background = "transparent"
 })
 
+btnNewGame.addEventListener('mousedown',(e)=>{
+  
+  
+  
+  e.preventDefault()
+  
+  btnNewGame.style.background = "#48fcff"
+  
+  setTimeout(()=>{
+    
+    newGame()
+    
+  },1100)
+  
+  
+  
+  
+  
+})
+
+btnNewGame.addEventListener('mouseup',(e)=>{
+  
+  e.preventDefault()
+  btnNewGame.style.background = "transparent"
+})
 
 
+startContainer.addEventListener('click',(e)=>{
+  e.preventDefault()
+  startContainer.style.opacity = 0
+  startContainer.style.zIndex = -1
+  startModal.style.opacity = 0
+  startModal.style.zIndex = -1
+  newGame()
+})
 
 
 
@@ -338,9 +376,7 @@ function newGame(){
   loop()
   spawnEnimys()
   ctx.fillStyle = "white"
-  ctx.clearRect(0,0,cnv.width,cnv.height)
+  ctx.fillRect(0,0,cnv.width,cnv.height)
   
 }
 
-loop()
-spawnEnimys()

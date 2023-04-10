@@ -14,6 +14,7 @@ body{
   font-family: Sans-Serif;
   display: flex;
   cursor: crosshair;
+  
 }
 
 #txtScore{
@@ -23,6 +24,7 @@ body{
   position: absolute;
   user-select: none;
   padding: 8px;
+  color: #48fcff;
   
 }
 
@@ -37,6 +39,61 @@ body{
   opacity: 0;
   z-index: -1;
   transition: opacity .5s;
+  user-select: none;
+}
+
+.modal{
+  
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.9);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  z-index: -2;
+  transition: opacity .5s;
+  user-select: none;
+  
+  
+}
+
+#startModal{
+  
+  opacity: 1;
+  z-index: 1;
+  background-color: #000;
+  
+  
+}
+
+#startContainer{
+  width: 340px;
+  height: 340px;
+  box-shadow: 0 0 5px #48fcff;
+  border-radius: 50%;
+  background: #48fcff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .5s;
+}
+
+#startContainer:hover{
+  background-color: #000;
+  box-shadow: 0 0 10px #48fcff;
+  color: #48fcff;
+  
+}
+
+
+#title{
+  text-shadow: 0 0 5px #48fcff;
+  font-size: 40px;
+  letter-spacing: 20px;
+  text-indent: 20px;
+  cursor: pointer;
   user-select: none;
 }
 
