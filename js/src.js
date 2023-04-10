@@ -20,6 +20,16 @@ const player = new Player(cnv.width/2,cnv.height/2,20,'#48fcff')
 
 const shootingSpeed = 4
 
+const txtScore = f('#txtScore')
+
+const gameOverModal = f('#gameOverModal')
+const gameOverScore = f('#gameOverScore')
+const btnNewGame = f('#btnNewGame')
+
+let animationId
+
+let score = 0
+
 let projectiles = []
 
 let enimys = []
@@ -70,8 +80,9 @@ function spawnEnimys(){
     
     enimys.push(new Enimy(posX,posY,radius,color,velocity))
     
-    
+    //console.log(enimys.length)
   },1500)
+  
   
 }
 
@@ -90,6 +101,18 @@ cnv.addEventListener('click',(e)=>{
 })
 
 
+btnNewGame.addEventListener('touchstart',(e)=>{
+  
+  
+  
+  e.preventDefault()
+  
+  newGame()
+  
+  
+  
+})
+
 
 
 
@@ -98,7 +121,8 @@ cnv.addEventListener('click',(e)=>{
 
 function loop(){
   
-  window.requestAnimationFrame(loop, cnv)
+ animationId = window.requestAnimationFrame(loop, cnv)
+ 
   update()
   
 }
@@ -147,6 +171,10 @@ function checkProjectiles(){
           
         }
         
+        score += 50 - Math.floor(enimy.radius)
+        
+        txtScore.innerHTML = "SCORE: " + score
+        
         
         projectiles.splice(i,1)
         createParticles(enimy,p)
@@ -168,6 +196,15 @@ function checkOffScreen(projectile,index){
   
   if(projectile.x + projectile.radius < 0 || projectile.x - projectile.radius > cnv.width || projectile.y + projectile.radius < 0 || projectile.y - projectile.radius > cnv.height){
     
+    
+    score -= 100
+    
+    if(score < 0){
+      score = 0
+    }
+    
+    txtScore.innerHTML = "SCORE: " + score
+    
     projectiles.splice(index,1)
    //console.log(projectiles.length)
     
@@ -187,6 +224,28 @@ function checkEnimys(){
     if(distance < player.radius + enimy.radius){
       
       
+      
+      
+      
+      createParticles(player,player)
+      createParticles(enimy,player)
+      enimys.splice(enimy,1)
+      particles.splice(particles,2)
+      player.color = "transparent"
+      player.s1.color = "transparent"
+      player.s2.color = "transparent"
+      
+      
+      setTimeout(()=>{
+        
+        let cor = "#48fcff"
+        
+        gameOver()
+        player.color = cor
+        player.s1.color = cor
+        player.s2.color = cor
+        
+      },1500)
       
       
       
@@ -246,6 +305,28 @@ function checkParticles(){
   
 }
 
+function gameOver(){
+  cancelAnimationFrame(animationId)
+  clearInterval(intervalId)
+  gameOverScore.innerHTML = score
+  gameOverModal.style.opacity = 1
+  gameOverModal.style.zIndex = 1
+}
+
+function newGame(){
+  gameOverModal.style.opacity = 0
+  gameOverModal.style.zIndex = -1
+  projectiles = []
+  enimys = []
+  particles = []
+  score = 0
+  txtScore.innerHTML = "SCORE: " + score
+  loop()
+  spawnEnimys()
+  ctx.fillStyle = "white"
+  ctx.clearRect(0,0,cnv.width,cnv.height)
+  
+}
 
 loop()
 spawnEnimys()

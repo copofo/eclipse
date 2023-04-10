@@ -4,3 +4,81 @@
   box-sizing: border-box;
   border: 0;
 }
+
+:root{
+  --cor1: #48fcff;
+}
+
+
+body{
+  font-family: Sans-Serif;
+  display: flex;
+  cursor: crosshair;
+}
+
+#txtScore{
+  
+  font-weight: bold;
+  text-shadow: 0 0 8px #48fcff;
+  position: absolute;
+  user-select: none;
+  padding: 8px;
+  
+}
+
+#gameOverModal{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.9);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity .5s;
+  user-select: none;
+}
+
+#gameOverContainer{
+  
+ width: 360px;
+ padding: 16px;
+ box-shadow: 0 0 5px #48fcff inset;
+ border-radius: 10px;
+ text-align: center;
+  
+  
+}
+
+#gameOverContainer > *{
+  margin: 10px;
+  text-shadow: 0 0 8px #48fcff;
+  
+  
+}
+
+hr{
+  padding: 1px;
+  box-shadow: 0 0 5px #48fcff;
+}
+
+#gameOverScore{
+  margin-top: 20px;
+  font-size: 48px;
+  color: #48fcff;
+}
+
+#btnNewGame{
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: rgba(0,0,0,.1);
+  box-shadow: 0 0 5px #48fcff;
+  margin-top: 20px;
+}
+
+#btnNewGame:active{
+  background-color: var(--cor1);
+  box-shadow: 0 0 10px var(--cor1);
+}
