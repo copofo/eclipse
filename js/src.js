@@ -13,6 +13,17 @@ window.addEventListener('scroll', () =>{
 const music = f('#music')
 music.volume = .5
 
+const ex = document.createElement('audio')
+ex.src = "../snd/explosion.ogg"
+
+ex.addEventListener("canplaythrough",()=>{
+  
+  
+  ex.play()
+  
+  
+})
+
 
 /*
     
@@ -317,10 +328,11 @@ function checkEnimys(){
     
     if(distance < player.radius + enimy.radius){
       
-      
-      
+      ex.play()
       
       playSound(explosion)
+      
+      
       createParticles(player,player)
       
       createParticles(enimy,player)
