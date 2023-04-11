@@ -71,7 +71,7 @@ body{
 #startContainer{
   width: 340px;
   height: 340px;
-  box-shadow: 0 0 5px #48fcff;
+  box-shadow: 0 0 20px #000 inset;
   border-radius: 50%;
   background: #48fcff;
   display: flex;

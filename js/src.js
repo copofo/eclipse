@@ -123,6 +123,7 @@ function spawnEnimys(){
 cnv.addEventListener('click',(e)=>{
   
   e.preventDefault()
+  playSound(shooting)
   const angle = Math.atan2(e.clientY - player.y, e.clientX - player.x )
   
   const velocity = {
@@ -131,7 +132,7 @@ cnv.addEventListener('click',(e)=>{
     y: Math.sin(angle) * shootingSpeed
   }
   projectiles.push(new Projectile(player.x,player.y,3,"#48fcff",velocity))
- playSound(shooting)
+ 
   //console.log(projectiles.length)
 })
 
@@ -252,6 +253,8 @@ function checkProjectiles(){
       //colisao
       if(distance < p.radius + enimy.radius){
         
+        playSound(explosion)
+        
         if(enimy.radius > 15){
           enimy.newRadius = enimy.radius -10
         }else{
@@ -268,7 +271,7 @@ function checkProjectiles(){
         
         projectiles.splice(i,1)
         createParticles(enimy,p)
-        playSound(explosion)
+        
         
       }
       
