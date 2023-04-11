@@ -9,7 +9,9 @@ window.addEventListener('scroll', () =>{
 
 
 
-var music = document.querySelector('audio')
+
+const music = f('#music')
+music.volume = .5
 
 
 /*
@@ -53,6 +55,8 @@ const startModal = f('#startModal')
 
 const startContainer = f('#startContainer')
 
+
+
 let animationId
 
 let score = 0
@@ -65,9 +69,9 @@ let intervalId
 
 let particles = []
 
-const shooting = 3
+const shooting = 1
 
-const exposion = 2
+const explosion = 2
 
 function spawnEnimys(){
   
@@ -127,7 +131,7 @@ cnv.addEventListener('click',(e)=>{
     y: Math.sin(angle) * shootingSpeed
   }
   projectiles.push(new Projectile(player.x,player.y,3,"#48fcff",velocity))
-  playSound(shooting)
+ playSound(shooting)
   //console.log(projectiles.length)
 })
 
@@ -264,7 +268,7 @@ function checkProjectiles(){
         
         projectiles.splice(i,1)
         createParticles(enimy,p)
-        playSound(exposion)
+        playSound(explosion)
         
       }
       
@@ -313,8 +317,9 @@ function checkEnimys(){
       
       
       
-      
+      playSound(explosion)
       createParticles(player,player)
+      
       createParticles(enimy,player)
       enimys.splice(enimy,1)
       particles.splice(particles,2)
@@ -393,6 +398,8 @@ function checkParticles(){
 }
 
 function gameOver(){
+  music.pause()
+  music.currentTime = 0
   cancelAnimationFrame(animationId)
   clearInterval(intervalId)
   gameOverScore.innerHTML = score
@@ -401,6 +408,7 @@ function gameOver(){
 }
 
 function newGame(){
+  music.play()
   gameOverModal.style.opacity = 0
   gameOverModal.style.zIndex = -1
   projectiles = []
@@ -415,10 +423,12 @@ function newGame(){
   
 }
 
+
+
 function playSound(soundType){
       
-      var sound = document.createElement('audio')
-      if(soundType === exposion){
+      const sound = document.createElement('audio')
+      if(soundType === explosion){
         
         sound.src = "../snd/explosion.ogg"
         
@@ -436,3 +446,5 @@ function playSound(soundType){
       },false)
       
     }
+    
+  
