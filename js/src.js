@@ -8,6 +8,29 @@ window.addEventListener('scroll', () =>{
 })
 
 
+
+var music = document.querySelector('audio')
+
+
+/*
+    
+    window.addEventListener('DOMContentLoaded', ()=>{
+      
+    
+        
+        music.controls = false
+        music.play()
+        
+        
+        
+      
+      
+      
+})
+
+*/
+
+
 const cnv = f('canvas')
 
 cnv.width = innerWidth
@@ -42,6 +65,9 @@ let intervalId
 
 let particles = []
 
+const shooting = 3
+
+const exposion = 2
 
 function spawnEnimys(){
   
@@ -101,6 +127,7 @@ cnv.addEventListener('click',(e)=>{
     y: Math.sin(angle) * shootingSpeed
   }
   projectiles.push(new Projectile(player.x,player.y,3,"#48fcff",velocity))
+  playSound(shooting)
   //console.log(projectiles.length)
 })
 
@@ -161,6 +188,9 @@ btnNewGame.addEventListener('mouseup',(e)=>{
 
 startContainer.addEventListener('click',(e)=>{
   e.preventDefault()
+  
+        music.controls = false
+        music.play()
   
   setTimeout(()=>{
     startContainer.style.opacity = 0
@@ -234,6 +264,7 @@ function checkProjectiles(){
         
         projectiles.splice(i,1)
         createParticles(enimy,p)
+        playSound(exposion)
         
       }
       
@@ -384,3 +415,24 @@ function newGame(){
   
 }
 
+function playSound(soundType){
+      
+      var sound = document.createElement('audio')
+      if(soundType === exposion){
+        
+        sound.src = "../snd/explosion.ogg"
+        
+      } else{
+        
+        sound.src = "../snd/shooting.mp3"
+        
+        
+      }
+      
+      sound.addEventListener('canplaythrough',()=>{
+        
+        sound.play()
+        
+      },false)
+      
+    }
