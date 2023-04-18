@@ -126,7 +126,7 @@ function spawnEnimys(){
     enimys.push(new Enimy(posX,posY,radius,color,velocity))
     
     //console.log(enimys.length)
-  },1500)
+  },2500)
   
   
 }
