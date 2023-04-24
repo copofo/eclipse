@@ -1,60 +1,68 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title></title>
-    <link rel="stylesheet" href="css/css.css">
-    
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-  </head>
-  <body>
-    
-    <!--
-    
-    <audio preload="auto" controls loop="loop" src="snd/game.mp3">
-        
-        
-        
-        
-      </audio>
-    -->
-    
-    <audio src="snd/game.mp3" loop id="music"></audio>
-    <audio src="snd/shooting.mp3"></audio>
-    <audio src="snd/explosion.ogg"></audio>
-    
-    <p id="txtScore">
-      SCORE: 0
-    </p>
-    
-    <div class="modal" id="gameOverModal">
-      <div id="gameOverContainer">
-        
-        <h2>Game Over</h2>
-        <hr>
-        <h1 id="gameOverScore">0</h1>
-        <p>Your Score</p>
-        <button type="button" id="btnNewGame">New Game</button>
-        
-        
-      </div>
-    </div>
-    
-    
-    <div class="modal" id="startModal">
-      
-      <div id="startContainer">
-        <h1 id="title">ECLIPSE</h1>
-      </div>
-      
-    </div>
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+
+<body>
     <canvas>
-      
+
     </canvas>
+
+    <div class="container">
+
+        <div class="divForm">
+            <h1 class="h1Style">TellesJr Games</h1>
+            <form>
+
+
+
+                
+                <div class="input_form">
+                    <div class="divEmail">
+                        <div class="lbl"><label for="email"></label>Email</div>
+                        <input type="email" id="email">
+                    </div>
+
+                    <div>
+                        <div class="lbl"><label for="pwd"></label>Senha</div>
+                        <input type="password" id="pwd">
+                    </div>
+
+                    <div class="btn"><button type="button" ><button>Entrar<div>
+                </div>
+
+
+
+            </form>
+
+            <!-- Fechamento class divForm -->
+        </div>
+        <!-- Fechamento class container  -->
+    </div>
     
     
-  </body>
-  <script src="js/class.js"></script>
-  <script src="js/src.js"></script>
+    <!--Firebase-->
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+<!--Firebase Authentication-->
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+
+<!--Inicializando o app do Firebase em nosso projeto web-->
+<script src="js/init.js"></script>
+    
+    
+    
+    
+    <script src="js/login.js"></script>
+</body>
+
 </html>

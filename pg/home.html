@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../css/css.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    
+    <!--
+    
+    <audio preload="auto" controls loop="loop" src="snd/game.mp3">
+        
+        
+        
+        
+      </audio>
+    -->
+    
+    <audio src="../snd/game.mp3" loop id="music"></audio>
+    <audio src="../snd/shooting.mp3"></audio>
+    <audio src="../snd/explosion.ogg"></audio>
+    
+    <p id="txtScore">
+      SCORE: 0
+    </p>
+    
+    <div class="modal" id="gameOverModal">
+      <div id="gameOverContainer">
+        
+        <h2>Game Over</h2>
+        <hr>
+        <h1 id="gameOverScore">0</h1>
+        <p>Your Score</p>
+        <button type="button" id="btnNewGame">New Game</button>
+        
+        
+      </div>
+    </div>
+    
+    
+    <div class="modal" id="startModal">
+      
+      <div id="startContainer">
+        <h1 id="title">ECLIPSE</h1>
+      </div>
+      
+    </div>
+    <canvas>
+      
+    </canvas>
+    
+    
+  </body>
+  <script src="../js/class.js"></script>
+  <script src="../js/src.js"></script>
+</html>
