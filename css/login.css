@@ -14,6 +14,7 @@
     font-family: Sans-Serif;
     display: flex;
     cursor: crosshair;
+    margin: 0;
     
   }
 
@@ -77,6 +78,7 @@
     margin: auto;
     border-radius: 5px;
     height: 20px;
+    
   }
   
   .input_form{
@@ -112,3 +114,68 @@
     text-align: center;
     margin-top: 40px;
   }
+  
+
+  
+  .register, .esqueci{
+    position: absolute;
+    bottom: 0;
+    color: var(--cor1);
+    
+  }
+  
+  .register {
+      left: 10px;
+      bottom: 10px;
+  }
+  
+  .esqueci{
+    right: 10px;
+    bottom: 10px;
+    color: #005165;
+  }
+  
+  .divPass{
+    margin-bottom: 10px;
+  }
+  
+  .vl{
+    font-size: 20px;
+    color: var(--cor1);
+    position: absolute;
+    left: 5px;
+  }
+  
+  #btnCadastrar{
+    margin-top: 15px;
+  }
+  
+.centralize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.loading {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+
+}
+
+
+.loading label {
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--cor1);
+}
+
+
+
+#lbl{
+  position: absolute;
+  top: -20px;
+}

@@ -1,3 +1,6 @@
+
+
+var currentUser
 const f = (tag) => document.querySelector(tag)
 
 const cnv = f('canvas')
@@ -26,17 +29,30 @@ const btnEntrar = f(".btn")
 btnEntrar.addEventListener('click',(e)=>{
   e.preventDefault()
   
+  showLoading()
+  
   firebase.auth().signInWithEmailAndPassword(email.value, pwd.value)
   
   
   .then(res => {
+        hideLoading()
+        firebase.auth().onAuthStateChanged((user)=>{
+          
+          currentUser = user
+          if(user.emailVerified){
+            window.location.href = "pg/home.html"
+          } else{
+            alert('Email não Verificado!')
+          }
+        })
         
-        window.location.href = "pg/home.html"
     })
     
         .catch(erro => {
-            
-            alert(erro)
+            hideLoading()
+            if(erro.code === "auth/user-not-found"){
+              alert("Usuário não encontrado!")
+            }
 
 
             
@@ -61,3 +77,4 @@ window.addEventListener('keydown',(e)=>{
   
   
 })
+

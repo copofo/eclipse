@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
+
 
 <head>
 
@@ -7,64 +9,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
 
 </head>
 
 <body>
-  
-  
-  
+  <div id="lbl"></div>
     <canvas>
 
     </canvas>
-    
-    
-    
-    
+
     <div class="container">
-      
+
         <div class="divForm">
-          
             <h1 class="h1Style">TellesJr Games</h1>
-            <div id="lbl">Carregando</div>
             <form>
 
 
-
-                
+      
+                    <div class="vl">&larr;</div>            
                 <div class="input_form">
                     <div class="divEmail">
                         <div class="lbl"><label for="email"></label>Email</div>
                         <input type="email" id="email">
                     </div>
 
-                    <div>
+                    <div class="divPass">
                         <div class="lbl"><label for="pwd"></label>Senha</div>
                         <input type="password" id="pwd">
                     </div>
-
-                    <div class="btn"><button type="button" >Entrar</button></div>
-                      
                     
-                      
+                    <div>
+
+                        <div class="lbl"><label for="con_pwd"></label>Confirmar Senha</div>
+
+                        <input type="password" id="con_pwd">
+                    </div>
+
+                    <div id="btnCadastrar"><button type="button" >Cadastrar</button></div>
                 </div>
 
-                
+
 
             </form>
-              
-              
+
             <!-- Fechamento class divForm -->
         </div>
-        
-        <div class="register"><a href="pg/register.html">Cadastre-se</a></div>
-        
-        <div class="esqueci">Esqueci a senha</div>
-        
-        
-
-                      
         <!-- Fechamento class container  -->
     </div>
     
@@ -77,13 +67,12 @@
 <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
 
 <!--Inicializando o app do Firebase em nosso projeto web-->
-<script src="js/init.js"></script>
-<script src="js/loading.js"></script>
+<script src="../js/init.js"></script>
+    
+    <script src="../js/loading.js"></script>
     
     
-    
-    
-    <script src="js/login.js"></script>
+    <script src="../js/register.js"></script>
 </body>
 
 </html>
