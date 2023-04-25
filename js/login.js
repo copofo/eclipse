@@ -1,4 +1,20 @@
-
+window.addEventListener("DOMContentLoaded",()=>{
+  
+  firebase.auth().onAuthStateChanged(user =>{
+    
+    if(user && user.emailVerified){
+      
+      window.location.href = "pg/home.html"
+    }
+    
+    
+    
+  })
+  
+  
+  
+  
+})
 
 var currentUser
 const f = (tag) => document.querySelector(tag)

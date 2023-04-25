@@ -1,5 +1,24 @@
+
+window.addEventListener("DOMContentLoaded",(e)=>{
+  e.preventDefault()
+  
+  const key = e.keyCode
+  
+  console.log(key)
+  
+  
+  
+  
+})
+
+
+
+
 const f = (tag) => document.querySelector(tag)
+
+/*
 window.addEventListener('scroll', () =>{
+  
   
   
   window.scrollTo(0,0)
@@ -7,8 +26,8 @@ window.addEventListener('scroll', () =>{
   
 })
 
-
-
+*/
+const sair = f("#sair")
 
 const music = f('#music')
 music.volume = .5
@@ -113,8 +132,8 @@ function spawnEnimys(){
     
     const velocity = {
       
-      x: Math.cos(angle) * .1,
-      y: Math.sin(angle) * .1
+      x: Math.cos(angle),
+      y: Math.sin(angle)
       
       
       
@@ -213,8 +232,11 @@ startContainer.addEventListener('click',(e)=>{
     startContainer.style.zIndex = -1
     startModal.style.opacity = 0
     startModal.style.zIndex = -1
+    
     newGame()
+    sair.style.display = "block"
   },500)
+  
   
 })
 
