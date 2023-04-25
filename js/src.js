@@ -139,6 +139,7 @@ function spawnEnimys(){
       
     }
     
+    
     const color = "hsl("+ Math.random() * 360 +",80%,50%)"
     
     
