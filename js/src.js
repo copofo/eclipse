@@ -132,8 +132,8 @@ function spawnEnimys(){
     
     const velocity = {
       
-      x: Math.cos(angle),
-      y: Math.sin(angle)
+      x: Math.cos(angle) * .2,
+      y: Math.sin(angle) * .2
       
       
       
