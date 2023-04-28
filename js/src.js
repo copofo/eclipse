@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded",(e)=>{
 
 
 const f = (tag) => document.querySelector(tag)
-
+const sair = f("#sair")
 /*
 window.addEventListener('scroll', () =>{
   
@@ -27,7 +27,7 @@ window.addEventListener('scroll', () =>{
 })
 
 */
-const sair = f("#sair")
+
 
 const music = f('#music')
 music.volume = .5
@@ -237,6 +237,20 @@ startContainer.addEventListener('click',(e)=>{
     
     newGame()
     sair.style.display = "block"
+    sair.addEventListener('click',()=>{
+      showLoading()
+          firebase.auth().signOut()
+        .then(() => {
+          hideLoading()
+          window.location.href = '../index.html'
+        })
+        .catch(() => {
+          hideLoading()
+         window.alert('Erro ao fazer logout!!')
+        })
+        
+        
+    })
   },500)
   
   
@@ -485,5 +499,3 @@ function playSound(soundType){
       },false)
       
     }
-    
-  
