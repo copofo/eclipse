@@ -79,13 +79,13 @@ btnEntrar.addEventListener('click',(e)=>{
 })
 
 
+
 window.addEventListener('keydown',(e)=>{
   
-  e.preventDefault()
   
-  const tecla = e.keyCode
+  //const tecla = e.keyCode
   
-  if(tecla === 13){
+  if(e.key === "Enter"){
     btnEntrar.click()
   }
   
@@ -93,3 +93,4 @@ window.addEventListener('keydown',(e)=>{
   
   
 })
+
